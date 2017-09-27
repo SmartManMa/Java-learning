@@ -1,5 +1,5 @@
 import java.util.concurrent.*;
-class AccountWithoutSync 
+class TestSync 
 {	
 	//Account类对象 被多个AddTesk任务共享，static修饰始终只有一个Account类对象
 	private static Account account = new Account();
@@ -33,9 +33,14 @@ class AccountWithoutSync
 			//}
 			//account.deposit(1);
 			//下面三条语句可以完成同步
-			synchronized(AccountWithoutSync.class){
+			synchronized(TestSync.class){
 				account.deposit(1);
 			}
+			//但是下面三条语句不可以完成同步！！！
+			//因为这里获取的对象是AddTesk
+			//synchronized(this){
+			//	account.deposit(1);
+			//}
 		}
 	}
 	private static class Account

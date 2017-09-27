@@ -14,6 +14,10 @@ public class TestThread
 		th1.start();
 		th2.start();
 		th3.start();
+		//将上面三句改为下面三句，可正常运行，但变成了单线程
+		//th1.run();
+		//th2.run();
+		//th3.run();
 		new PrintCharByThread('$',10000).start();
 		new PrintCharByThread('*',10000).start();
 		Thread.sleep(1000);
